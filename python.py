@@ -2,7 +2,7 @@ import datetime
 
 def main():
     now = datetime.datetime.now()
-    message = f"✅ Python script ran successfully at {now}"
+    message = f"✅ python script ran successfully at {now}"
     
     # Print to console
     print(message)
