@@ -3,9 +3,11 @@ import datetime
 def main():
     now = datetime.datetime.now()
     message = f"✅ python script ran successfully at {now}"
+    message1='Hi Balachandra Welcome to CircleCI'
     
     # Print to console
     print(message)
+    print(message1)
 
     # Write to a log file
     with open("log.txt", "w") as f:
