@@ -3,7 +3,7 @@ import datetime
 def main():
     now = datetime.datetime.now()
     message = f"✅ python script ran successfully at {now}"
-    message1='Hi Srilekha Welcome to CircleCI'
+    message1='Hi Balachandra Welcome to CircleCI'
     
     # Print to console
     print(message)
