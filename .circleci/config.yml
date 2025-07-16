@@ -12,7 +12,14 @@ jobs:
     steps:
       - checkout
 
-      
+      - run:
+          name: Wait for Elasticsearch to be ready
+          command: |
+            for i in {1..30}; do
+              curl -s http://localhost:9200 >/dev/null && break
+              echo "Waiting for Elasticsearch to start..."
+              sleep 2
+            done
 
       - run:
           name: Install dependencies
