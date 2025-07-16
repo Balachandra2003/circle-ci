@@ -19,7 +19,11 @@ if __name__ == "__main__":
 from elasticsearch import Elasticsearch
 
 # Connect to Elasticsearch
-es = Elasticsearch("http://localhost:9200")
+es = Elasticsearch(
+    "http://localhost:9200",
+    headers={"Accept": "application/vnd.elasticsearch+json; compatible-with=8",
+             "Content-Type": "application/vnd.elasticsearch+json; compatible-with=8"}
+)
 
 # Static project data
 project_data = [
