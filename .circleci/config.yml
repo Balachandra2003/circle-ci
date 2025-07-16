@@ -4,15 +4,32 @@ jobs:
   build:
     docker:
       - image: cimg/python:3.11
+      - image: docker.elastic.co/elasticsearch/elasticsearch:8.9.2
+        environment:
+          - discovery.type=single-node
+        ports:
+          - 9200:9200
     steps:
       - checkout
+      
+      - run:
+          name: Wait for Elasticsearch to be ready
+          command: |
+            for i in {1..30}; do
+              curl -s http://localhost:9200 && break
+              echo "Waiting for Elasticsearch to start..."
+              sleep 2
+            done
+
       - run:
           name: Install dependencies
           command: |
             python -m pip install --upgrade pip
             pip install elasticsearch
-      
-      - run: python python.py   
+
+      - run:
+          name: Run your Python script
+          command: python python.py
 
 workflows:
   build_now:
