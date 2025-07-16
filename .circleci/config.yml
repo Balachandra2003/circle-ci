@@ -6,17 +6,15 @@ jobs:
       - image: cimg/python:3.11
       - image: docker.elastic.co/elasticsearch/elasticsearch:8.9.2
         environment:
-          - discovery.type=single-node
-        ports:
-          - 9200:9200
+          discovery.type: single-node
     steps:
       - checkout
-      
+
       - run:
           name: Wait for Elasticsearch to be ready
           command: |
             for i in {1..30}; do
-              curl -s http://localhost:9200 && break
+              curl -s http://localhost:9200 >/dev/null && break
               echo "Waiting for Elasticsearch to start..."
               sleep 2
             done
