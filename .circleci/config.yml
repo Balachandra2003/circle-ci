@@ -13,7 +13,7 @@ jobs:
       - checkout
 
       - run:
-          name: Wait for Elasticsearch to be ready
+          name: Wait for Elasticsearch to be Ready
           command: |
             for i in {1..30}; do
               curl -s http://localhost:9200 >/dev/null && break
